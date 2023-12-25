@@ -1,0 +1,38 @@
+App:
+  Name: go-market-server
+  Host: 0.0.0.0
+  Port: 50010
+  RunMode: "test"
+  LogFile: "/app/log/info.log"
+  SourceDir: "/app/resources"
+MySQL:
+  test:
+    DSN: "root:123456@tcp(127.0.0.1:3306)/main?loc=Asia%2FShanghai&charset=utf8mb4&parseTime=true"
+
+    # the maximum number of open connections to the database
+    MaxOpenConns: 100
+
+    # the maximum number of connections in the idle connection pool.
+    MaxIdleConns: 100
+
+    # the maximum amount of time a connection may be reused
+    ConnMaxLifetime: 1h
+
+    Gorm:
+      SlowThreshold: 100ms
+      Colorful: false
+      IgnoreRecordNotFoundError: true
+      LogLevel: 3 #Info
+Redis:
+  test:
+    ConnConf:
+      addr: 127.0.0.1:6379
+      RedisCommonConf:
+        password:
+        poolSize: 50
+        dialTimeout: 2s
+        readTimeout: 2s
+        idleTimeout: 12s
+        DB: 3
+    DbConf:
+      ExpireTime: 7200
